@@ -1,0 +1,324 @@
+{% extends 'base.html' %}
+{% block title %}ASL Home{% endblock %}
+
+{% block body %}
+  <h1>Welcome to ASL homepage!</h1>
+<div id="OdfMes" style="width: 1800px;height: 800px;float: right"></div>
+  <h2>Navigation</h2>
+  <ul>
+    <li><a href="/signs">View all signs</a></li>
+    <li><a href="/categories">View all categories</a></li>
+    <li><a href="/users">View all users</a></li>
+  </ul><script>
+    var datas = [{
+        name: 'signs',
+        symbolSize: 120,
+        // draggable: true,// add this phrase after the unclickable
+        category: 0,
+        itemStyle: {
+            normal: {
+                borderColor: '#04f2a7',
+                borderWidth: 6,
+                shadowBlur: 20,
+                shadowColor: '#04f2a7',
+                color: '#001c43',
+            }
+        }
+    }, {
+        name: 'colors',
+        symbolSize: 100,
+        itemStyle: {
+            normal: {
+                borderColor: '#04f2a7',
+                borderWidth: 4,
+                shadowBlur: 10,
+                shadowColor: '#04f2a7',
+                color: '#001c43',
+            }
+        },
+        category: 1,
+
+    }, {
+        name: 'black',
+        symbolSize: 80,
+        category: 1,
+        itemStyle: {
+            normal: {
+                borderColor: '#04f2a7',
+                borderWidth: 4,
+                shadowBlur: 10,
+                shadowColor: '#04f2a7',
+                color: '#001c43',
+            }
+        },
+
+    }, {
+        name: 'red',
+        symbolSize: 80,
+        category: 1,
+        itemStyle: {
+            normal: {
+                borderColor: '#82dffe',
+                borderWidth: 4,
+                shadowBlur: 10,
+                shadowColor: '#04f2a7',
+                color: '#001c43',
+            }
+        },
+
+    }, {
+        name: 'green',
+        symbolSize: 80,
+        category: 1,
+        itemStyle: {
+            normal: {
+                borderColor: '#82dffe',
+                borderWidth: 4,
+                shadowBlur: 10,
+                shadowColor: '#04f2a7',
+                color: '#001c43',
+            }
+        },
+
+    }, {
+        name: 'greetings',
+        symbolSize: 100,
+        category: 2,
+        itemStyle: {
+            normal: {
+                borderColor: '#82dffe',
+                borderWidth: 4,
+                shadowBlur: 10,
+                shadowColor: '#04f2a7',
+                color: '#001c43',
+            }
+        },
+
+    }, {
+        name: 'hello',
+        symbolSize: 80,
+        category: 2,
+        itemStyle: {
+            normal: {
+                borderColor: '#b457ff',
+                borderWidth: 4,
+                shadowBlur: 10,
+                shadowColor: '#b457ff',
+                color: '#001c43'
+            }
+        },
+
+    }, {
+        name: 'how are you?',
+        symbolSize: 80,
+        itemStyle: {
+            normal: {
+                borderColor: '#82dffe',
+                borderWidth: 4,
+                shadowBlur: 10,
+                shadowColor: '#04f2a7',
+                color: '#001c43'
+
+            }
+        },
+        category: 2,
+
+    }, {
+        name: 'nice to meet you',
+        symbolSize: 100,
+        itemStyle: {
+            normal: {
+                borderColor: '#82dffe',
+                borderWidth: 4,
+                shadowBlur: 10,
+                shadowColor: '#04f2a7',
+                color: '#001c43'
+            }
+        },
+        category: 2,
+
+    }, {
+        name: 'what is your name',
+        symbolSize: 80,
+        category: 2,
+        itemStyle: {
+            normal: {
+                borderColor: '#82dffe',
+                borderWidth: 4,
+                shadowBlur: 10,
+                shadowColor: '#04f2a7',
+                color: '#001c43'
+            }
+        },
+    }];
+    var linkmes = [{
+            source: 'signs',
+            target: 'colors',
+            value: 'DNA'
+        }, {
+            source: 'signs',
+            target: 'greetings',
+            value: 'DNA'
+        }, {
+            source: 'colors',
+            target: 'black',
+            value: 'DNA'
+        },
+        //  {
+        //     source: 'black',
+        //     target: 'colors',
+        //     value: 'wow！'
+        // }, 
+        {
+            source: 'colors',
+            target: 'red',
+            value: 'DNA'
+        }, {
+            source: 'colors',
+            target: 'green',
+            value: 'DNA'
+        }, {
+            source: 'signs',
+            target: 'greetings',
+            value: 'DNA'
+        }, {
+            source: 'greetings',
+            target: 'what is your name',
+            value: 'DNA'
+        }, {
+            source: 'greetings',
+            target: 'hello',
+            value: 'DNA'
+        }, {
+            source: 'greetings',
+            target: 'how are you?',
+            value: 'DNA',
+        }, {
+            source: 'greetings',
+            target: 'nice to meet you',
+            value: 'DNA'
+        }
+    ]; //Connected information
+
+    $(function() {
+        var myChart = echarts.init(document.getElementById('OdfMes'));
+        option = {
+            backgroundColor: '#1a4377',
+
+            tooltip: {},
+            animationDurationUpdate: 1500,
+            animationEasingUpdate: 'quinticInOut',
+            color: ['#83e0ff', '#45f5ce', '#b158ff'],
+            series: [{
+                type: 'graph',
+                layout: 'force',
+                force: {
+                    repulsion: 1000,
+                    edgeLength: 50
+                },
+                roam: true,
+                label: {
+                    normal: {
+                        show: true
+                    }
+                },
+                data: datas,
+                links: linkmes,
+                lineStyle: {
+                    normal: {
+                        opacity: 0.9,
+                        width: 5,
+                        curveness: 0
+                    }
+                },
+                categories: [{
+                    name: '0'
+                }, {
+                    name: '1'
+                }, {
+                    name: '2'
+                }]
+            }]
+        }
+        myChart.setOption(option);
+        myChart.on('click', function(params) {
+            if (params.name != null) {
+                //const mes=params.name.replace(/\d+/g,"")
+                console.log(params);
+                if (params.name == "how are you?") {
+                    //updated nodes
+                    datas.push({
+                        name: 'sick',
+                        symbolSize: 80,
+                        category: 2,
+                        itemStyle: {
+                            normal: {
+                                borderColor: '#82dffe',
+                                borderWidth: 4,
+                                shadowBlur: 10,
+                                shadowColor: '#04f2a7',
+                                color: '#001c43'
+                            }
+                        }
+                    });
+                    //updated relationship
+                    linkmes.push({
+                        source: 'how are you?',
+                        target: 'sick'
+                    });
+                    //Update Node
+                    datas.push({
+                        name: 'tired',
+                        symbolSize: 80,
+                        category: 2,
+                        itemStyle: {
+                            normal: {
+                                borderColor: '#82dffe',
+                                borderWidth: 4,
+                                shadowBlur: 10,
+                                shadowColor: '#04f2a7',
+                                color: '#001c43'
+                            }
+                        }
+                    });
+                    //updated relationship
+                    linkmes.push({
+                        source: 'how are you?',
+                        target: 'tired'
+                    });
+                     //Update Node
+                     datas.push({
+                        name: 'same',
+                        symbolSize: 80,
+                        category: 2,
+                        itemStyle: {
+                            normal: {
+                                borderColor: '#82dffe',
+                                borderWidth: 4,
+                                shadowBlur: 10,
+                                shadowColor: '#04f2a7',
+                                color: '#001c43'
+                            }
+                        }
+                    });
+                    //updated relationship
+                    linkmes.push({
+                        source: 'how are you?',
+                        target: 'same'
+                    });
+                    //Redrawing
+                    myChart.setOption({
+                        series: [{
+                            data: datas,
+                            links: linkmes
+                        }]
+                    });
+
+                }
+            }
+        })
+    })
+</script>
+{% endblock %}
+
+
