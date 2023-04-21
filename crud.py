@@ -1,6 +1,6 @@
 # crud.py
 import json
-from model import db, User, Sign, Review, Category, SignCategory, connect_to_db
+from model import db, User, Review, Sign, Category, SignCategory, connect_to_db
 from server import app
 
 connect_to_db(app)
@@ -17,7 +17,6 @@ def get_users():
 
     return User.query.all()
 
-
 def get_user_by_id(user_id):
     """Return a user by primary key."""
 
@@ -31,23 +30,6 @@ def get_signs_by_category(category_id):
     if not category:
         return []
     return category.signs
-
-def load_data():
-    # Get the path to the JSON file and open it
-    with open('data/signs.json') as f:
-        sign_data = json.loads(f.read())
-        for data in sign_data['signs']:
-            # Create a new Sign object for each sign
-            sign = Sign(
-                name=data['name'],
-                image_url=data['image_url']
-            )
-
-            # Add the Sign object to the database session
-            db.session.add(sign)
-
-        # Commit the changes to the database
-        db.session.commit()
 
 def create_categories():
     cat1 = Category(name="Category 1")
@@ -63,6 +45,6 @@ def create_sign_categories():
     db.session.commit()
 
 def create_review(user, sign, comment_text):
-    review = Review(user=user, sign=sign, comment_text=comment_text)
+    review = Review(user_id=user, sign_id=sign, comment_text=comment_text)
 
     return review

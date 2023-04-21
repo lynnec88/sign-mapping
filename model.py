@@ -5,20 +5,6 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
-class User(db.Model):
-    """A user."""
-
-    __tablename__ = "users"
-
-    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    email = db.Column(db.String, unique=True)
-    password = db.Column(db.String)
-
-    
-
-    def __repr__(self):
-        return f"<User user_id={self.user_id} email={self.email}>"
-
 class Sign(db.Model):
     __tablename__ = 'signs'
 
@@ -28,6 +14,8 @@ class Sign(db.Model):
     description = db.Column(db.String(200))
     categories = db.relationship('Category', secondary='signcategories', back_populates='signs')
 
+    reviews = db.relationship("Review", back_populates="sign")
+
     def __repr__(self):
         return f"<Sign sign_id={self.sign_id} name={self.name}>"
 
@@ -36,9 +24,6 @@ class SignCategory(db.Model):
     signcategory_id = db.Column(db.Integer, primary_key=True)
     sign = db.Column(db.Integer, db.ForeignKey('signs.sign_id'))
     category = db.Column(db.Integer, db.ForeignKey('categories.category_id'))
-    
-    sign = db.relationship('Sign', backref='sign_categories')
-    category = db.relationship('Category', backref='sign_categories')
 
     def __repr__(self):
         return f'<SignCategory sign_id={self.sign_id} category_id={self.category_id}>'
@@ -54,6 +39,20 @@ class Category(db.Model):
     def __repr__(self):
         return f"<Category category_id={self.category_id} name={self.name}>"
     
+class User(db.Model):
+    """A user."""
+
+    __tablename__ = "users"
+
+    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    email = db.Column(db.String, unique=True)
+    password = db.Column(db.String)
+
+    reviews = db.relationship("Review", back_populates="user")
+
+    def __repr__(self):
+        return f"<User user_id={self.user_id} email={self.email}>"
+    
 class Review(db.Model):
     """A model for user reviews of signs."""
 
@@ -64,16 +63,16 @@ class Review(db.Model):
     sign_id = db.Column(db.Integer, db.ForeignKey('signs.sign_id'))
     comment_text = db.Column(db.String(200))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-    user = db.relationship("User", backref=db.backref("reviews", order_by=review_id))
-    sign = db.relationship("Sign", backref=db.backref("reviews", order_by=review_id))
+    
+    user = db.relationship("User", back_populates="reviews")
+    sign = db.relationship("Sign", back_populates="reviews")
 
     def __repr__(self):
         return f"<Review review_id={self.review_id} comment_text={self.comment_text}>"
  
 
 #database name is sign_mapping
-def connect_to_db(flask_app, db_uri="postgresql:///sign_mapping", echo=True):
+def connect_to_db(flask_app, db_uri="postgresql:///sign_mapping", echo=False):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
