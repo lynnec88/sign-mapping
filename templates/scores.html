@@ -1,0 +1,30 @@
+{% extends 'base_user.html' %}
+{% block head %}
+{% endblock %}
+
+{% block title %}
+    做题记录
+{% endblock %}
+
+{% block main %}
+    <div class="container" style="min-height: 68vh">
+        <h1 style="font-weight: bolder">Record：</h1>
+        <div class="row mt-5" data-masonry='{"percentPosition": true }'>
+            {% for userquizscore in userquizscores %}
+                <a class="col-sm-6 col-lg-4 mb-4" style="color: unset;text-decoration-line: unset" href="/answer/{{ userquizscore.userquiz_id }}">
+                        <div class="card p-3">
+                            <figure class="p-3 mb-0">
+                                <blockquote class="blockquote">
+                                    <h1 class="fst-italic">{{ userquizscore.score }}</h1>
+                                    <p>{{ userquizscore.quiz.quizname }}</p>
+                                </blockquote>
+                                <figcaption class="blockquote-footer mb-0 text-muted float-end mt-0">
+                                    {{ userquizscore.time.strftime('%Y-%m-%d  %H:%M:%S') }}
+                                </figcaption>
+                            </figure>
+                        </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

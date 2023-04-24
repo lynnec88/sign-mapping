@@ -1,0 +1,48 @@
+{% extends 'base_user.html' %}
+
+{% block main %}
+    <div class="container marketing" style="min-height: 68vh">
+        <h1 class="my-5">{{ userquizscore.quiz.quizname }}：{{ userquizscore.score }}</h1>
+        {% for useranswer in userquizscore.useranswers %}
+            <div class="row featurette card my-3" style="flex-direction: row">
+                <div class="col-md-7 align-self-center p-lg-5">
+                    <h2 class="featurette-heading fw-normal my-3">
+                        {{ useranswer.question.question_text }}
+                    </h2>
+                    <div class="lead">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio"
+                                   {% if useranswer.user_answer=='1' %}checked{% endif %} disabled>
+                            <label class="form-check-label">
+                                {{ useranswer.question.option1 }}
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio"
+                                   {% if useranswer.user_answer=='2' %}checked{% endif %} disabled>
+                            <label class="form-check-label">
+                                {{ useranswer.question.option2 }}
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio"
+                                   {% if useranswer.user_answer=='3' %}checked{% endif %} disabled>
+                            <label class="form-check-label">
+                                {{ useranswer.question.option3 }}
+                            </label>
+                        </div>
+                            {% if useranswer.user_answer==useranswer.question.answer %}
+                                ✔Answer correctly
+                            {% else %}
+                                ❌Correct answer：{{ useranswer.question.answer }}
+                            {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <img class="bd-placeholder-img card-img-top m-auto"
+                         src="{{ url_for('static', filename=useranswer.question.sign.image_url) }}">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

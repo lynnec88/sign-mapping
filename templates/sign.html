@@ -1,0 +1,68 @@
+{% extends 'base_user.html' %}
+
+
+{% block title %}
+    {{ asl.name }}
+{% endblock %}
+
+{% block main %}
+    <div class="container marketing">
+        <div class="row featurette">
+            <div class="col-md-7 align-self-center p-lg-5">
+                <h2 class="featurette-heading fw-normal lh-1">
+                    {{ asl.name }}
+                </h2>
+                <p class="lead">{{ asl.description *40 }}</p>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="share()">Share</button>
+            </div>
+            <div class="col-md-5">
+                <img class="bd-placeholder-img card-img-top m-auto" src="{{ url_for('static', filename=asl.image_url) }}">
+            </div>
+        </div>
+
+        <script>
+            function share() {
+                let $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val(window.location.href).select();
+                document.execCommand("copy");
+                $temp.remove();
+                alert("The link to the current page has been copied, so share it with other friends!")
+            }
+            function review(){
+                const review = $('#review').val();
+                $.post($(location).attr('pathname'), {review: review}, function (res) {
+                    alert(res.message);
+                    if (res.status) location.reload()
+                });
+            }
+        </script>
+        <hr class="featurette-divider">
+
+        <div class="card shadow-sm rounded-3">
+            <div class="mx-5 my-4">
+                <label for="exampleFormControlTextarea1" class="form-label">Comment:</label>
+                <textarea class="form-control" id="review"  rows="4"></textarea>
+                <button type="button" class="btn btn-outline-primary mt-3 float-end" onclick="review()">Review</button>
+            </div>
+        </div>
+
+        <div class="row mt-5" data-masonry='{"percentPosition": true }'>
+            {% for review in asl.reviews %}
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card p-3">
+                        <figure class="p-3 mb-0">
+                            <blockquote class="blockquote">
+                                <p>{{ review.comment_text *2 }}</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer mb-0 text-muted float-end mt-0">
+                                {{ review.created_at.strftime('%Y-%m-%d  %H:%M:%S') }}
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'base_user.html' %}
+
+{% block main %}
+
+    <div class="container marketing" style="min-height: 68vh">
+        <h1 class="my-5">{{ quizzes.quizname }}</h1>
+        {% for question in questions %}
+            <div class="row featurette card my-3" style="flex-direction: row">
+                <div class="col-md-7 align-self-center p-lg-5">
+                    <h2 class="featurette-heading fw-normal my-3">
+                        {{ question.question_text }}
+                    </h2>
+                    <div class="lead">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="1" name="{{ question.question_id }}"
+                                   onclick="storeAnswer(this,{{ question.answer }})">
+                            <label class="form-check-label">
+                                {{ question.option1 }}
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="2" name="{{ question.question_id }}"
+                                   onclick="storeAnswer(this,{{ question.answer }})">
+                            <label class="form-check-label">
+                                {{ question.option2 }}
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="3" name="{{ question.question_id }}"
+                                   onclick="storeAnswer(this,{{ question.answer }})">
+                            <label class="form-check-label">
+                                {{ question.option3 }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <img class="bd-placeholder-img card-img-top m-auto"
+                         src="{{ url_for('static', filename=question.sign.image_url) }}">
+                </div>
+            </div>
+        {% endfor %}
+        <div class="row justify-content-center my-5">
+            <button class="btn btn-primary col-2 btn-lg" id="submit">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        let answers = [];
+        let rights = 0;
+        const count = '{{ questions|length }}';
+        const quiz_id = window.location.pathname.split('/')[2];
+
+        function storeAnswer(selectedOption, right) {
+            let questionId = selectedOption.getAttribute("name");
+            let option = selectedOption.value;
+            if (right.toString() === option) {
+                rights++;
+            }
+
+            let answer = answers.find(function (ans) {
+                return ans.question_id === questionId;
+            });
+
+            if (answer) {
+                answer.user_answer = option;
+            } else {
+                answers.push({
+                    question_id: questionId,
+                    user_answer: option,
+                });
+            }
+        }
+
+        $('#submit').click(function () {
+            const score = Math.round((rights / parseInt(count)) * 100)
+            $.post($(location).attr('pathname'), {
+                'answers': JSON.stringify(answers),
+                'score': score,
+            }, function (res) {
+                alert(res.message);
+                if (res.status) window.location.href = '/scores';
+            });
+        })
+    </script>
+{% endblock %}
