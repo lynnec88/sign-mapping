@@ -100,11 +100,11 @@ def sign_page():
     return render_template('home.html', nodedata=nodedata, linkdata=linkdata)
 
 #sign
-# @app.route('/sign/<sign_id>', methods=['GET'])
-# @login_required
-# def sign_page(sign_id):
-#     asl = Sign.query.get(sign_id)
-#     return render_template('sign.html', asl=asl)
+@app.route('/sign/<sign_id>', methods=['GET'])
+@login_required
+def sign_page(sign_id):
+    asl = Sign.query.get(sign_id)
+    return render_template('sign.html', asl=asl)
 
 
 @app.route('/sign/<sign_id>', methods=['POST'])
@@ -129,12 +129,12 @@ def quizzes_page():
     return render_template('quizzes.html', quizzes=quizzes)
 
 
-# @app.route('/quiz/<quiz_id>', methods=['GET'])
-# @login_required
-# def sign_page(quiz_id):
-#     questions = Question.query.filter_by(quiz_id=quiz_id).all()
-#     quizzes = Quiz.query.get(quiz_id)
-#     return render_template('quiz.html', questions=questions, quizzes=quizzes)
+@app.route('/quiz/<quiz_id>', methods=['GET'])
+@login_required
+def sign_page(quiz_id):
+    questions = Question.query.filter_by(quiz_id=quiz_id).all()
+    quizzes = Quiz.query.get(quiz_id)
+    return render_template('quiz.html', questions=questions, quizzes=quizzes)
 
 
 @app.route('/quiz/<quiz_id>', methods=['POST'])

@@ -1,125 +1,124 @@
 {
   "signs": [
     {
-      "name": "black",
-      "image_url": "/static/images/black.gif",
-      "description": "something",
-      "category_id": 1
+      "sign_id": 1,
+      "name": "off duty",
+      "image_url": "images/10007.gif",
+      "description": "下班"
     },
     {
-      "name": "blue",
-      "image_url": "/static/images/blue.gif",
-      "description": "something",
-      "category_id": 1
-    },
-    {
-      "name": "green",
-      "image_url": "/static/images/green.gif",
-      "description": "something",
-      "category_id": 1
-    },
-    {
-      "name": "red",
-      "image_url": "/static/images/red.gif",
-      "description": "something",
-      "category_id": 1
-    },
-    {
-      "name": "color",
-      "image_url": "/static/images/color.gif",
-      "description": "something",
-      "category_id": 1
-    },
-    {
-      "name": "different",
-      "image_url": "/static/images/different.gif",
-      "description": "something",
-      "category_id": 2
-    },
-    {
-      "name": "same",
-      "image_url": "/static/images/same.gif",
-      "description": "something",
-      "category_id": 2
-    },
-    {
-      "name": "difficult",
-      "image_url": "/static/images/difficult.gif",
-      "description": "something",
-      "category_id": 2
-    },
-    {
-      "name": "easy",
-      "image_url": "/static/images/easy.gif",
-      "description": "something",
-      "category_id": 2
-    },
-    {
+      "sign_id": 2,
       "name": "hello",
-      "image_url": "/static/images/hello.gif",
-      "description": "something",
-      "category_id": 3
+      "image_url": "images/10001.gif",
+      "description": "你好"
     },
     {
-      "name": "how are you",
-      "image_url": "/static/images/how are you.gif",
-      "description": "something",
-      "category_id": 3
+      "sign_id": 3,
+      "name": "cold",
+      "image_url": "images/10006.gif",
+      "description": "冷吗"
     },
     {
-      "name": "nice to meet you",
-      "image_url": "/static/images/nice to meet you.gif",
-      "description": "something",
-      "category_id": 3
+      "sign_id": 4,
+      "name": "good night",
+      "image_url": "images/10003.gif",
+      "description": "晚安"
     },
     {
-      "name": "sick",
-      "image_url": "/static/images/sick.gif",
-      "description": "something",
-      "category_id": 3
+      "sign_id": 5,
+      "name": "faint",
+      "image_url": "images/10020.gif",
+      "description": "晕了"
     },
     {
+      "sign_id": 6,
+      "name": "doubt",
+      "image_url": "images/10018.gif",
+      "description": "疑问"
+    },
+    {
+      "sign_id": 7,
+      "name": "drink more water",
+      "image_url": "images/10012.gif",
+      "description": "多喝水"
+    },
+    {
+      "sign_id": 8,
+      "name": "rest",
+      "image_url": "images/10013.gif",
+      "description": "休息"
+    },
+    {
+      "sign_id": 9,
+      "name": "not tired",
+      "image_url": "images/10009.gif",
+      "description": "不累"
+    },
+    {
+      "sign_id": 10,
+      "name": "good morning",
+      "image_url": "images/10002.gif",
+      "description": "早安"
+    },
+    {
+      "sign_id": 11,
+      "name": "wipe sweat",
+      "image_url": "images/10019.gif",
+      "description": "擦汗"
+    },
+    {
+      "sign_id": 12,
+      "name": "thanks",
+      "image_url": "images/10004.gif",
+      "description": "谢谢"
+    },
+    {
+      "sign_id": 13,
+      "name": "want to play",
+      "image_url": "images/10011.gif",
+      "description": "想玩"
+    },
+    {
+      "sign_id": 14,
+      "name": "i am going to wash hands",
+      "image_url": "images/10010.gif",
+      "description": "我去洗手"
+    },
+    {
+      "sign_id": 15,
+      "name": "you are welcome",
+      "image_url": "images/10005.gif",
+      "description": "不客气"
+    },
+    {
+      "sign_id": 16,
+      "name": "want sleep",
+      "image_url": "images/10015.gif",
+      "description": "想睡觉"
+    },
+    {
+      "sign_id": 17,
+      "name": "sleepy",
+      "image_url": "images/10014.gif",
+      "description": "好困"
+    },
+    {
+      "sign_id": 18,
       "name": "tired",
-      "image_url": "/static/images/tired.gif",
-      "description": "something",
-      "category_id": 3
+      "image_url": "images/10008.gif",
+      "description": "累吗"
     },
     {
-      "name": "what",
-      "image_url": "/static/images/what.gif",
-      "description": "something",
-      "category_id": 4
+      "sign_id": 19,
+      "name": "pitiful",
+      "image_url": "images/10017.gif",
+      "description": "可怜"
     },
     {
-      "name": "where",
-      "image_url": "/static/images/where.gif",
-      "description": "something",
-      "category_id": 4
-    },
-    {
-      "name": "what is your name",
-      "image_url": "/static/images/what is your name.gif",
-      "description": "something",
-      "category_id": 4
-    },
-    {
-      "name": "who is nina",
-      "image_url": "/static/images/who is nina.gif",
-      "description": "something",
-      "category_id": 4
-    },
-    {
-      "name": "speak",
-      "image_url": "/static/images/speak.gif",
-      "description": "something",
-      "category_id": 5
-    },
-    {
-      "name": "sign",
-      "image_url": "/static/images/sign.gif",
-      "description": "something",
-      "category_id": 5
+      "sign_id": 20,
+      "name": "yeah",
+      "image_url": "images/10016.gif",
+      "description": "耶"
     }
-
   ]
 }

@@ -17,6 +17,25 @@ class User(db.Model):
 
     def __repr__(self):
         return f"<User user_id={self.user_id} email={self.email}>"
+    
+    def __repr__(self):
+        return f'<User user_id={self.user_id} email={self.email}>'
+
+    @classmethod
+    def create(cls, email, password):
+        return cls(email=email, password=password)
+
+    @classmethod
+    def get_by_id(cls, email):
+        return cls.query.filter(User.email == email).first()
+    
+    @classmethod
+    def get_by_email(cls, email):
+        return cls.query.filter(User.email == email).first()
+
+    @classmethod
+    def all_users(cls):
+        return cls.query.all()
 
 
 class Sign(db.Model):
