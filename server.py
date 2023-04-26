@@ -100,7 +100,7 @@ def sign_page():
     return render_template('home.html', nodedata=nodedata, linkdata=linkdata)
 
 #sign
-@app.route('/sign/<sign_id>', methods=['GET'])
+@app.route('/sign/<sign_id>', methods=['GET'], endpoint='sign1')
 @login_required
 def sign_page(sign_id):
     asl = Sign.query.get(sign_id)
@@ -129,7 +129,7 @@ def quizzes_page():
     return render_template('quizzes.html', quizzes=quizzes)
 
 
-@app.route('/quiz/<quiz_id>', methods=['GET'])
+@app.route('/quiz/<quiz_id>', methods=['GET'], endpoint='sign2')
 @login_required
 def sign_page(quiz_id):
     questions = Question.query.filter_by(quiz_id=quiz_id).all()

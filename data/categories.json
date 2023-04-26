@@ -1,0 +1,26 @@
+[
+    {
+      "category_id": 1,
+      "name": "Greetings"
+    },
+    {
+      "category_id": 2,
+      "name": "Question"
+    },
+    {
+      "category_id": 3,
+      "name": "Reply"
+    },
+    {
+      "category_id": 4,
+      "name": "Interjection"
+    },
+    {
+      "category_id": 5,
+      "name": "Adjective"
+    },
+    {
+      "category_id": 6,
+      "name": "Action"
+    }
+]

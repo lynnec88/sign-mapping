@@ -1,5 +1,4 @@
-{
-  "signs": [
+[
     {
       "sign_id": 1,
       "name": "off duty",
@@ -120,5 +119,4 @@
       "image_url": "images/10016.gif",
       "description": "耶"
     }
-  ]
-}
+]
