@@ -17,6 +17,16 @@ def create_signcategory(sign_id, category_id):
     db.session.commit()
     return signcategory
 
+def create_question(question_id, quiz_id, question_text, option1, option2, option3, answer, sign_id):
+    question = Question(question_id=question_id, quiz_id=quiz_id,question_text=question_text,option1=option1,option2=option2,option3=option3,answer=answer,sign_id=sign_id)
+    db.session.add(question)
+    db.session.commit()
+    return question
+
+def create_quiz(quiz_id, quizname):
+    quiz = Quiz(quiz_id=quiz_id, quizname=quizname)
+    return quiz
+
 def create_user(email, password):
     """Create and return a new user."""
 
