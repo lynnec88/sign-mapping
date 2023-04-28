@@ -3,121 +3,121 @@
     {
       "sign_id": 1,
       "name": "off duty",
-      "image_url": "images/10007.gif",
+      "image_url": "images/off-duty.gif",
       "description": "下班"
     },
     {
       "sign_id": 2,
       "name": "hello",
-      "image_url": "images/10001.gif",
+      "image_url": "images/hello.gif",
       "description": "你好"
     },
     {
       "sign_id": 3,
       "name": "cold",
-      "image_url": "images/10006.gif",
+      "image_url": "images/cold.gif",
       "description": "冷吗"
     },
     {
       "sign_id": 4,
       "name": "good night",
-      "image_url": "images/10003.gif",
+      "image_url": "images/good-night.gif",
       "description": "晚安"
     },
     {
       "sign_id": 5,
       "name": "faint",
-      "image_url": "images/10020.gif",
+      "image_url": "images/faint.gif",
       "description": "晕了"
     },
     {
       "sign_id": 6,
       "name": "doubt",
-      "image_url": "images/10018.gif",
+      "image_url": "images/doubt.gif",
       "description": "疑问"
     },
     {
       "sign_id": 7,
       "name": "drink more water",
-      "image_url": "images/10012.gif",
+      "image_url": "images/drink-more-water.gif",
       "description": "多喝水"
     },
     {
       "sign_id": 8,
       "name": "rest",
-      "image_url": "images/10013.gif",
+      "image_url": "images/rest.gif",
       "description": "休息"
     },
     {
       "sign_id": 9,
       "name": "not tired",
-      "image_url": "images/10009.gif",
+      "image_url": "images/not-tired.gif",
       "description": "不累"
     },
     {
       "sign_id": 10,
       "name": "good morning",
-      "image_url": "images/10002.gif",
+      "image_url": "images/good-morning.gif",
       "description": "早安"
     },
     {
       "sign_id": 11,
       "name": "wipe sweat",
-      "image_url": "images/10019.gif",
+      "image_url": "images/wipe-sweat.gif",
       "description": "擦汗"
     },
     {
       "sign_id": 12,
       "name": "thanks",
-      "image_url": "images/10004.gif",
+      "image_url": "images/thank-you.gif",
       "description": "谢谢"
     },
     {
       "sign_id": 13,
       "name": "want to play",
-      "image_url": "images/10011.gif",
+      "image_url": "images/want-2-play.gif",
       "description": "想玩"
     },
     {
       "sign_id": 14,
       "name": "i am going to wash hands",
-      "image_url": "images/10010.gif",
+      "image_url": "images/go-2-wash-hands.gif",
       "description": "我去洗手"
     },
     {
       "sign_id": 15,
       "name": "you are welcome",
-      "image_url": "images/10005.gif",
+      "image_url": "images/you-r-welcome.gif",
       "description": "不客气"
     },
     {
       "sign_id": 16,
       "name": "want sleep",
-      "image_url": "images/10015.gif",
+      "image_url": "images/want-2-sleep.gif",
       "description": "想睡觉"
     },
     {
       "sign_id": 17,
       "name": "sleepy",
-      "image_url": "images/10014.gif",
+      "image_url": "images/sleepy.gif",
       "description": "好困"
     },
     {
       "sign_id": 18,
       "name": "tired",
-      "image_url": "images/10008.gif",
+      "image_url": "images/tired.gif",
       "description": "累吗"
     },
     {
       "sign_id": 19,
-      "name": "pitiful",
-      "image_url": "images/10017.gif",
+      "name": "pity",
+      "image_url": "images/pity.gif",
       "description": "可怜"
     },
     {
       "sign_id": 20,
       "name": "yeah",
-      "image_url": "images/10016.gif",
+      "image_url": "images/yeah.gif",
       "description": "耶"
     }
 ],
